@@ -4,10 +4,15 @@
 Currently Nouns DAO does not have a good system for facilitating large payments for proposals with long timelines or uncertain deliverables. Large payments upfront lack ability to ensure completion of tasks and existing escrow contracts require additional transactions or a non-DAO third party, which undermines the intent of the DAO governance system.
 
 ## Solution
-Smart contracts to facilitate DAO native escrow of payments that are configurable to the needs of the proposal without sacrificing DAO control. The escrow would be optimistically unlocked unless the DAO were to pass a follow up proposal to cancel payments, at which time all unclaimed funds would be returned to the DAO.
+Rather than paying a grant as a single upfront lump sum payment, the Accountable Grant smart contract will unlock payout in 3 different phases:
+1. Initial payment
+2. Linear vesting
+3. Completion payment
+
+If the funded project does not succeed or the proposer abandons the project the DAO will be able to launch a follow up vote to cancel the grant and return all unclaimed funds.
 
 ## Implementation Details
-Optimistic escrow contract that allows the DAO to set and forget payment while still being able to hold proposals accountable. In the best case there will be no additional steps for the DAO to perform - one transaction to create and fund an escrow contract. In the worst case the DAO would need to perform a second transaction, via standard proposal system, to cancel an engagement. Optimistic escrow functionality would be useable for Nouns proposals, small grants, and all Nouns derivative protocols.
+These smart contracts will facilitate DAO native escrow of payments that are configurable to the needs of the proposal without sacrificing DAO control. The escrow would be optimistically unlocked unless the DAO were to pass a follow up proposal to cancel payments, at which time all unclaimed funds would be returned to the DAO. In the best case there will be no additional steps for the DAO to perform - one transaction to create and fund an escrow contract. In the worst case the DAO would need to perform a second transaction, via standard proposal system, to cancel an engagement. Optimistic escrow functionality would be useable for Nouns proposals, small grants, and all Nouns derivative protocols.
 
 ### Configurable parameters
 - **Funding**: Total ETH to be funded
